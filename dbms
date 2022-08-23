@@ -1,0 +1,190 @@
+mysql> use emp_position
+Database changed
+mysql> show tables
+    -> show tables
+    -> ^X
+    -> ^Z^B^C
+mysql> show tables;
+Empty set (0.12 sec)
+
+mysql> create table emp(emp_no int ,ename varchar(100),job varchar(100),mgl int ,hire_date date,salary int ,comm int , dept_num int);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_emp_position |
++------------------------+
+| emp                    |
++------------------------+
+1 row in set (0.01 sec)
+
+mysql> create table dept(Dept_no int, Dept-name varchar(100),loc_dep varchar(100) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-name varchar(100),loc_dep varchar(100) )' at line 1
+mysql> create table dept(Dept_no int, Dept-name varchar(100),loc_dep varchar(100) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-name varchar(100),loc_dep varchar(100) )' at line 1
+mysql> insert into emp values(213 ,'Abcd' , 'Manager' , 234 ,'2012-09-08',60000,4000,12);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select *from emp;
++--------+-------+---------+------+------------+--------+------+----------+
+| emp_no | ename | job     | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+---------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager |  234 | 2012-09-08 |  60000 | 4000 |       12 |
++--------+-------+---------+------+------------+--------+------+----------+
+1 row in set (0.03 sec)
+
+mysql> insert into emp values(113 ,'Satyd' , 'fresher' , 434 ,'2019-07-08',56780, 1000 ,2);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into emp values(105 ,'Mnak' , 'Assistant' , 354 ,'2017-06-09',12000, 500 ,3);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into emp values(10 ,'Asfam' , 'HR' , 19 ,'2010-06-09',98000, 6700 ,6);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from emp;
++--------+-------+-----------+------+------------+--------+------+----------+
+| emp_no | ename | job       | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+-----------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager   |  234 | 2012-09-08 |  60000 | 4000 |       12 |
+|    113 | Satyd | fresher   |  434 | 2019-07-08 |  56780 | 1000 |        2 |
+|    105 | Mnak  | Assistant |  354 | 2017-06-09 |  12000 |  500 |        3 |
+|     10 | Asfam | HR        |   19 | 2010-06-09 |  98000 | 6700 |        6 |
++--------+-------+-----------+------+------------+--------+------+----------+
+4 rows in set (0.00 sec)
+
+mysql> create table dep(deptno int , dname varchar(100) , loc varchar(100));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into dep(143 , 'IT' , 'PUNE');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '143 , 'IT' , 'PUNE')' at line 1
+mysql> insert into dep(143 , 'IT' , 'PUNE');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '143 , 'IT' , 'PUNE')' at line 1
+mysql> insert into dep values(143 , 'IT' , 'PUNE');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into dep values(843 , 'CSE' , 'MUMBAI');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into dep values(043 , 'DATA SCIENCE' , 'BANGALORE');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into dep values(042 , 'FULL STACK' , 'DELHI');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select *from DEP;
++--------+--------------+-----------+
+| deptno | dname        | loc       |
++--------+--------------+-----------+
+|    143 | IT           | PUNE      |
+|    843 | CSE          | MUMBAI    |
+|     43 | DATA SCIENCE | BANGALORE |
+|     42 | FULL STACK   | DELHI     |
++--------+--------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select *from emp WHERE salary>40000;
++--------+-------+---------+------+------------+--------+------+----------+
+| emp_no | ename | job     | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+---------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager |  234 | 2012-09-08 |  60000 | 4000 |       12 |
+|    113 | Satyd | fresher |  434 | 2019-07-08 |  56780 | 1000 |        2 |
+|     10 | Asfam | HR      |   19 | 2010-06-09 |  98000 | 6700 |        6 |
++--------+-------+---------+------+------------+--------+------+----------+
+3 rows in set (0.02 sec)
+
+mysql> select *from emp WHERE comm>1000;
++--------+-------+---------+------+------------+--------+------+----------+
+| emp_no | ename | job     | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+---------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager |  234 | 2012-09-08 |  60000 | 4000 |       12 |
+|     10 | Asfam | HR      |   19 | 2010-06-09 |  98000 | 6700 |        6 |
++--------+-------+---------+------+------------+--------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT ename, hire_date FROM emp;
++-------+------------+
+| ename | hire_date  |
++-------+------------+
+| Abcd  | 2012-09-08 |
+| Satyd | 2019-07-08 |
+| Mnak  | 2017-06-09 |
+| Asfam | 2010-06-09 |
++-------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select *from emp WHERE to_char(hire_date,'mon')='jan';
+ERROR 1305 (42000): FUNCTION emp_position.to_char does not exist
+mysql> select *from emp WHEREto_char(hire_date,'mon')='jan';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(hire_date,'mon')='jan'' at line 1
+mysql> select *from emp WHEREto_char(hire_date,'mon')='jan';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(hire_date,'mon')='jan'' at line 1
+mysql> select *from emp WHERE to_char(hire_date,'mon')='jan';
+ERROR 1305 (42000): FUNCTION emp_position.to_char does not exist
+mysql> select *from emp WHERE MONTH(hire_date)=1;
+Empty set (0.01 sec)
+
+mysql> select *from emp WHERE MONTH(hire_date)=9;
++--------+-------+---------+------+------------+--------+------+----------+
+| emp_no | ename | job     | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+---------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager |  234 | 2012-09-08 |  60000 | 4000 |       12 |
++--------+-------+---------+------+------------+--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select *from emp WHERE MONTH(hire_date)=8;
+Empty set (0.00 sec)
+
+mysql> select *from emp WHERE MONTH(hire_date)=6;
++--------+-------+-----------+------+------------+--------+------+----------+
+| emp_no | ename | job       | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+-----------+------+------------+--------+------+----------+
+|    105 | Mnak  | Assistant |  354 | 2017-06-09 |  12000 |  500 |        3 |
+|     10 | Asfam | HR        |   19 | 2010-06-09 |  98000 | 6700 |        6 |
++--------+-------+-----------+------+------------+--------+------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select *from emp WHERE mod(salary,2)=1;
+Empty set (0.02 sec)
+
+mysql> select *from emp WHERE mod(salary,2)=0;
++--------+-------+-----------+------+------------+--------+------+----------+
+| emp_no | ename | job       | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+-----------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager   |  234 | 2012-09-08 |  60000 | 4000 |       12 |
+|    113 | Satyd | fresher   |  434 | 2019-07-08 |  56780 | 1000 |        2 |
+|    105 | Mnak  | Assistant |  354 | 2017-06-09 |  12000 |  500 |        3 |
+|     10 | Asfam | HR        |   19 | 2010-06-09 |  98000 | 6700 |        6 |
++--------+-------+-----------+------+------------+--------+------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select *from emp  WHERE ename LIKE '%A%';
++--------+-------+-----------+------+------------+--------+------+----------+
+| emp_no | ename | job       | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+-----------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager   |  234 | 2012-09-08 |  60000 | 4000 |       12 |
+|    113 | Satyd | fresher   |  434 | 2019-07-08 |  56780 | 1000 |        2 |
+|    105 | Mnak  | Assistant |  354 | 2017-06-09 |  12000 |  500 |        3 |
+|     10 | Asfam | HR        |   19 | 2010-06-09 |  98000 | 6700 |        6 |
++--------+-------+-----------+------+------------+--------+------+----------+
+4 rows in set (0.02 sec)
+
+mysql> select *from emp  e WHERE 5> (SELECT count(*) FROM emp WHERE e.salary>salary);
++--------+-------+-----------+------+------------+--------+------+----------+
+| emp_no | ename | job       | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+-----------+------+------------+--------+------+----------+
+|    213 | Abcd  | Manager   |  234 | 2012-09-08 |  60000 | 4000 |       12 |
+|    113 | Satyd | fresher   |  434 | 2019-07-08 |  56780 | 1000 |        2 |
+|    105 | Mnak  | Assistant |  354 | 2017-06-09 |  12000 |  500 |        3 |
+|     10 | Asfam | HR        |   19 | 2010-06-09 |  98000 | 6700 |        6 |
++--------+-------+-----------+------+------------+--------+------+----------+
+4 rows in set (0.05 sec)
+
+mysql> select *from emp  e WHERE 2> (SELECT count(*) FROM emp WHERE e.salary>salary);
++--------+-------+-----------+------+------------+--------+------+----------+
+| emp_no | ename | job       | mgl  | hire_date  | salary | comm | dept_num |
++--------+-------+-----------+------+------------+--------+------+----------+
+|    113 | Satyd | fresher   |  434 | 2019-07-08 |  56780 | 1000 |        2 |
+|    105 | Mnak  | Assistant |  354 | 2017-06-09 |  12000 |  500 |        3 |
++--------+-------+-----------+------+------------+--------+------+----------+
+2 rows in set (0.00 sec)
